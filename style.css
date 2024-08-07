@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.login-box, .signup-box {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 81, 0);
+    color: white;
+    cursor: pointer;
+}
+
+a {
+    text-align: center;
+    margin-top: 10px;
+    color: rgb(255, 81, 0);;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#passwordError {
+    display: none;
+    color: red;
+}
+
+#passwordStrength {
+    display: flex;
+    align-items: center;
+}
+
+#strengthBar {
+    height: 5px;
+    width: 100%;
+    background-color: red;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#strengthText {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
