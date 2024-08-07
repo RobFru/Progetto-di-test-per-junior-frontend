@@ -1,12 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Login form submission
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        // Add login logic here
-        alert(`Logging in with email: ${email}`);
-    });
 
     // Signup form submission
     document.getElementById('signupForm').addEventListener('submit', function(e) {
@@ -30,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('signupPassword').value;
         const strengthBar = document.getElementById('strengthBar');
         const strengthText = document.getElementById('strengthText');
-        
+
+        strengthText.style.display = 'block';  //strengthText.style.display = 'none';
+        strengthBar.style.display = 'block';
+
         let strength = 0;
         
         if (password.length > 4) strength++;
@@ -41,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         switch (strength) {
             case 0:
-                strengthBar.style.width = '0%';
+                strengthBar.style.width = '5%';
                 strengthBar.style.backgroundColor = 'red';
                 strengthText.textContent = 'too easy my friend';
                 break;
@@ -70,6 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 strengthBar.style.backgroundColor = 'green';
                 strengthText.textContent = 'very strong';
                 break;
+        }
+    });
+
+
+    // Remove tips when password field is empty
+    document.getElementById('signupPassword').addEventListener('input', function() {
+        const password = document.getElementById('signupPassword').value;
+        const strengthText = document.getElementById('strengthText');
+        const strengthBar = document.getElementById('strengthBar');
+
+        if (password.length == 0){
+            strengthText.style.display = 'none';
+            strengthBar.style.display = 'none';
         }
     });
 });
