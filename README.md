@@ -6,6 +6,7 @@ Questo progetto è una semplice applicazione web di login e registrazione, reali
 # Guida all'uso dell'applicazione di Registrazione e Login
 
 Questo progetto consente agli utenti di registrarsi e accedere utilizzando un'email e una password. I dati degli utenti vengono memorizzati localmente nel browser utilizzando `localStorage`. Questa scelta è stata fatta perchè la configurazione `localStorage` è una soluzione semplice e integrata nei browser moderni. Non richiede configurazioni aggiuntive o installazione di server backend.
+Per poter visualizzare gli utenti registarti vai su: Analizza > Archiviazione > Archiviazione locale > Seleziona 'users'.
 
 
 Sicurezza:
