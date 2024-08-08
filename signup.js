@@ -1,36 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Seleziona gli elementi del DOM una sola volta per evitare duplicazioni
     const signupForm = document.getElementById('signupForm');
     const passwordInput = document.getElementById('signupPassword');
     const passwordError = document.getElementById('passwordError');
     const strengthText = document.getElementById('strengthText');
     const strengthBar = document.getElementById('strengthBar');
 
+    function hashPassword(password) {
+        const hashed = CryptoJS.SHA256(password);
+    return hashed.toString(CryptoJS.enc.Hex);
+}
+
     // Gestione della sottomissione del modulo di registrazione
     signupForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+        const email = document.getElementById('signupEmail').value;
         const password = passwordInput.value;
 
         if (password.length <= 4) {
             passwordError.style.display = 'block';
-        } else {
-            passwordError.style.display = 'none';
-
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('signupEmail').value;
-            const termsAccepted = document.getElementById('terms').checked;
-
-            if (!termsAccepted) {
-                alert('You must accept the terms and conditions to register.');
-                return;
-            }
-
-            // Aggiungi qui la logica per la registrazione
-            alert(`Signing up with email: ${email}`);
+            return;
         }
+
+        const hashedPassword = hashPassword(password);
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+
+        if (users[email]) {
+            alert('Email già registrata!');
+            return;
+        }
+
+        users[email] = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            password: hashedPassword
+        };
+
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Registrazione completata!');
     });
+
 
     // Funzione per controllare la forza della password
     passwordInput.addEventListener('input', function() {
